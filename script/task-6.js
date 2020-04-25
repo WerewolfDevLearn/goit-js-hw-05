@@ -19,6 +19,6 @@ numbers.pop();
 
 for (let i = 0; i < numbers.length; i += 1) {
   console.log(numbers[i]);
-  total += total + numbers[i];
+  total += numbers[i];
 }
 alert(`Общая сумма чисел равна ${total}`);
