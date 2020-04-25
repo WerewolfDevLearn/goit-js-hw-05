@@ -21,7 +21,6 @@ const addLogin = function(allLogins, login) {
   } else {
     console.log('Ошибка! Логин должен быть от 4 до 16 символов');
   }
-  console.log(allLogins);
 };
 
 /*
