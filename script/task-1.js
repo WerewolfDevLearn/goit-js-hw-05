@@ -1,10 +1,24 @@
-const logItems = function(array) {
-  for (let i = 0; i < array.length; i += 1) {
-    console.log(`${i + 1} - ${array[i]}`);
-  }
+const Account = function(obj) {
+  this.login = obj.login;
+  this.email = obj.email;
 };
-//  Вызовы функции для проверки работоспособности твоей реализации.
 
-logItems(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']);
-console.log('---------------------------------------------------------');
-logItems([5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
+Account.prototype.getInfo = function() {
+  console.log('Login: ', this.login);
+  console.log('Email: ', this.email);
+};
+
+console.log(Account.prototype.getInfo); // function
+
+const mango = new Account({
+  login: 'Mangozedog',
+  email: 'mango@dog.woof',
+});
+
+mango.getInfo(); // Login: Mangozedog, Email: mango@dog.woof
+
+const poly = new Account({
+  login: 'Poly',
+  email: 'poly@mail.com',
+});
+poly.getInfo(); // Login: Poly, Email: poly@mail.com

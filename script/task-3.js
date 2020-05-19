@@ -1,21 +1,38 @@
-const findLongestWord = function(string) {
-  const arr = string.split(' ');
-  let lngthString = 0;
-  let j = 0;
-  for (let i = 0; i < arr.length; i += 1) {
-    if (lngthString < arr[i].length) {
-      lngthString = arr[i].length;
-      j = i;
-    }
+class Storage {
+  constructor(arr) {
+    this.items = arr;
   }
-  return arr[j];
-};
 
-/*
- * Вызовы функции для проверки работоспособности твоей реализации.
- */
-console.log(findLongestWord('The quick brown fox jumped over the lazy dog')); // 'jumped'
+  getItems() {
+    return this.items;
+  }
 
-console.log(findLongestWord('Google do a roll')); // 'Google'
+  addItem(item) {
+    this.items.push(item);
+  }
 
-console.log(findLongestWord('May the force be with you')); // 'force'
+  removeItem(item) {
+    this.items.splice(this.items.indexOf(item), 1);
+  }
+
+  // removeItem(item) {
+  // this.items.includes(item)
+  /* ? this.items.splice(this.items.indexOf(item), 1)*/
+  // : 'There is no such item!';
+  // }
+}
+const storage = new Storage([
+  'Нанитоиды',
+  'Пролонгер',
+  'Железные жупи',
+  'Антигравитатор',
+]);
+
+const items = storage.getItems();
+console.table(items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор" ]
+
+storage.addItem('Дроид');
+console.table(storage.items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор", "Дроид" ]
+
+storage.removeItem('Пролонгер');
+console.table(storage.items); // [ "Нанитоиды", "Железные жупи", "Антигравитатор", "Дроид" ]

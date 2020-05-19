@@ -1,51 +1,32 @@
-const formatString = function(string) {
-  if (string.length >= 40) {
-    string = string.slice(0, 39) + '...';
+class StringBuilder {
+  constructor(string) {
+    this._value = string;
   }
-  return string;
-};
-/*
- * Вызовы функции для проверки работоспособности твоей реализации.
- */
-console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
-// вернется оригинальная строка
 
-console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
-// вернется форматированная строка
+  get value() {
+    return this._value;
+  }
 
-console.log(formatString('Curabitur ligula sapien.'));
-// вернется оригинальная строка
+  append(str) {
+    return (this._value = `${this._value}${str}`);
+  }
 
-console.log(
-  formatString(
-    'Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.',
-  ),
-);
-// Var 2
-// const formatString = function(string) {
-//   const arrLess = string.split('');
-//   if (arrLess.length >= 40) {
-//     let j = 0;
-//     for (let i = 35; i > 20; i -= 1) {
-//       if (arrLess[i] === ' ') {
-//         j = i;
-//         break;
-//       }
-//     }
-//     const arrBig = arrLess;
-//     arrBig.splice(j, j, ' ', '...');
-//     string = arrBig.join('');
-//   }
-//   return string;
-// };
+  prepend(str) {
+    return (this._value = `${str}${this._value}`);
+  }
 
-// var 3
-// const formatString = function(string) {
-//   if (string.length >= 40) {
-//     string = string.slice(0, 39);
-//     const indexLastSpacebar = string.lastIndexOf(' ');
-//     console.log(indexLastSpacebar);
-//     string = string.slice(0, indexLastSpacebar - 3) + '...';
-//   }
-//   return string;
-// };
+  pad(str) {
+    return (this._value = `${str}${this._value}${str}`);
+  }
+}
+
+const builder = new StringBuilder('.');
+
+builder.append('^');
+console.log(builder._value); // '.^'
+
+builder.prepend('^');
+console.log(builder._value); // '^.^'
+
+builder.pad('=');
+console.log(builder._value); // '=^.^='

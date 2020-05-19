@@ -16,6 +16,8 @@ h1 {
   width: 700px;
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
+  padding: 0px;
 }
 
 .homework-link {
